@@ -161,25 +161,70 @@ const processorImages = {
 
 // GPU image URLs - replace with actual image URLs
 const gpuDetails = [
-  { modell: 'RTX 4090',  manufacturer: 'Nvidia', memory: '24GB', benchmark: '20000' },
-  { modell: 'RTX 4080',  manufacturer: 'Nvidia', memory: '16GB', benchmark: '18000' },
-  { modell: 'RTX 4070 Ti', manufacturer: 'Nvidia', memory: '12GB', benchmark: '15000' },
-  { modell: 'RTX 4070',  manufacturer: 'Nvidia', memory: '12GB', benchmark: '14000' },
-  { modell: 'RTX 3090 Ti', manufacturer: 'Nvidia', memory: '24GB', benchmark: '12000' },
-  { modell: 'RTX 3090',  manufacturer: 'Nvidia', memory: '24GB', benchmark: '11000' },
-  { modell: 'RTX 3080 Ti', manufacturer: 'Nvidia', memory: '12GB', benchmark: '10000' },
-  { modell: 'RTX 3080',  manufacturer: 'Nvidia', memory: '10GB', benchmark: '9500' },
-  { modell: 'RTX 3070 Ti', manufacturer: 'Nvidia', memory: '8GB',  benchmark: '8500' },
-  { modell: 'RTX 3070',  manufacturer: 'Nvidia', memory: '8GB',  benchmark: '8000' },
-  { modell: 'RX 7900 XTX', manufacturer: 'AMD',   memory: '24GB', benchmark: '19000' },
-  { modell: 'RX 7900 XT', manufacturer: 'AMD',   memory: '20GB', benchmark: '17500' },
-  { modell: 'RX 7800 XT', manufacturer: 'AMD',   memory: '16GB', benchmark: '16000' },
-  { modell: 'RX 7700 XT', manufacturer: 'AMD',   memory: '12GB', benchmark: '14500' },
-  { modell: 'RX 6950 XT', manufacturer: 'AMD',   memory: '16GB', benchmark: '11500' },
-  { modell: 'RX 6900 XT', manufacturer: 'AMD',   memory: '16GB', benchmark: '11000' },
-  { modell: 'RX 6800 XT', manufacturer: 'AMD',   memory: '16GB', benchmark: '10500' },
-  { modell: 'RX 6800',  manufacturer: 'AMD',   memory: '16GB', benchmark: '10000' },
-  { modell: 'RX 6700 XT', manufacturer: 'AMD',   memory: '12GB', benchmark: '9000' }
+  { 
+    modell: 'RTX 4090', 
+    manufacturer: 'Nvidia',
+    architecture: 'Ada Lovelace',
+    memory: '24GB GDDR6X',
+    memoryBus: '384-bit',
+    baseClock: '2.23 GHz',
+    boostClock: '2.52 GHz',
+    cudaCores: '16384',
+    rtCores: '144',
+    tensorCores: '576',
+    tdp: '450W',
+    pcie: 'PCIe 4.0',
+    benchmark: '20000',
+    preis: '1599 €'
+  },
+  {
+    modell: 'RTX 4080',
+    manufacturer: 'Nvidia',
+    architecture: 'Ada Lovelace',
+    memory: '16GB GDDR6X',
+    memoryBus: '256-bit',
+    baseClock: '2.21 GHz',
+    boostClock: '2.51 GHz',
+    cudaCores: '9728',
+    rtCores: '76',
+    tensorCores: '304',
+    tdp: '320W',
+    pcie: 'PCIe 4.0',
+    benchmark: '18000',
+    preis: '1199 €'
+  },
+  {
+    modell: 'RX 7900 XTX',
+    manufacturer: 'AMD',
+    architecture: 'RDNA 3',
+    memory: '24GB GDDR6',
+    memoryBus: '384-bit',
+    baseClock: '1.9 GHz',
+    boostClock: '2.5 GHz',
+    streamProcessors: '12288',
+    rayAccelerators: '96',
+    aiAccelerators: '192',
+    tdp: '355W',
+    pcie: 'PCIe 4.0',
+    benchmark: '19000',
+    preis: '999 €'
+  },
+  {
+    modell: 'RX 7900 XT',
+    manufacturer: 'AMD',
+    architecture: 'RDNA 3',
+    memory: '20GB GDDR6',
+    memoryBus: '320-bit',
+    baseClock: '1.5 GHz',
+    boostClock: '2.4 GHz',
+    streamProcessors: '10752',
+    rayAccelerators: '84',
+    aiAccelerators: '168',
+    tdp: '315W',
+    pcie: 'PCIe 4.0',
+    benchmark: '17500',
+    preis: '899 €'
+  }
 ];
 
 const gpuImages = {
@@ -306,9 +351,43 @@ function zeigeVergleich() {
     html += "<table class='comparison-table'>";
     html += "<thead><tr><th>Spezifikation</th><th>" + gpu1.modell + "</th><th>" + gpu2.modell + "</th></tr></thead>";
     html += "<tbody>";
+    
+    // Basic Specifications
+    html += "<tr class='category-header'><td colspan='3'>Grundlegende Spezifikationen</td></tr>";
     html += "<tr><td>Hersteller</td><td>" + gpu1.manufacturer + "</td><td>" + gpu2.manufacturer + "</td></tr>";
+    html += "<tr><td>Architektur</td><td>" + gpu1.architecture + "</td><td>" + gpu2.architecture + "</td></tr>";
+    html += "<tr><td>Basis-Takt</td><td>" + gpu1.baseClock + "</td><td>" + gpu2.baseClock + "</td></tr>";
+    html += "<tr><td>Boost-Takt</td><td>" + gpu1.boostClock + "</td><td>" + gpu2.boostClock + "</td></tr>";
+    
+    // Memory Specifications
+    html += "<tr class='category-header'><td colspan='3'>Speicher-Spezifikationen</td></tr>";
     html += "<tr><td>Speicher</td><td>" + gpu1.memory + "</td><td>" + gpu2.memory + "</td></tr>";
-    html += "<tr><td>Benchmark</td><td>" + gpu1.benchmark + "</td><td>" + gpu2.benchmark + "</td></tr>";
+    html += "<tr><td>Speicherbus</td><td>" + gpu1.memoryBus + "</td><td>" + gpu2.memoryBus + "</td></tr>";
+    
+    // Processing Units
+    html += "<tr class='category-header'><td colspan='3'>Recheneinheiten</td></tr>";
+    if (gpu1.manufacturer === 'Nvidia' && gpu2.manufacturer === 'Nvidia') {
+      html += "<tr><td>CUDA Kerne</td><td>" + gpu1.cudaCores + "</td><td>" + gpu2.cudaCores + "</td></tr>";
+      html += "<tr><td>RT Kerne</td><td>" + gpu1.rtCores + "</td><td>" + gpu2.rtCores + "</td></tr>";
+      html += "<tr><td>Tensor Kerne</td><td>" + gpu1.tensorCores + "</td><td>" + gpu2.tensorCores + "</td></tr>";
+    } else if (gpu1.manufacturer === 'AMD' && gpu2.manufacturer === 'AMD') {
+      html += "<tr><td>Stream Prozessoren</td><td>" + gpu1.streamProcessors + "</td><td>" + gpu2.streamProcessors + "</td></tr>";
+      html += "<tr><td>Ray Accelerators</td><td>" + gpu1.rayAccelerators + "</td><td>" + gpu2.rayAccelerators + "</td></tr>";
+      html += "<tr><td>AI Accelerators</td><td>" + gpu1.aiAccelerators + "</td><td>" + gpu2.aiAccelerators + "</td></tr>";
+    } else {
+      html += "<tr><td>Processing Units</td><td>" + (gpu1.cudaCores || gpu1.streamProcessors) + "</td><td>" + (gpu2.cudaCores || gpu2.streamProcessors) + "</td></tr>";
+    }
+    
+    // Power & Interface
+    html += "<tr class='category-header'><td colspan='3'>Stromverbrauch & Schnittstelle</td></tr>";
+    html += "<tr><td>TDP</td><td>" + gpu1.tdp + "</td><td>" + gpu2.tdp + "</td></tr>";
+    html += "<tr><td>PCIe Version</td><td>" + gpu1.pcie + "</td><td>" + gpu2.pcie + "</td></tr>";
+    
+    // Performance & Price
+    html += "<tr class='category-header'><td colspan='3'>Performance & Preis</td></tr>";
+    html += "<tr><td>Benchmark Score</td><td>" + gpu1.benchmark + "</td><td>" + gpu2.benchmark + "</td></tr>";
+    html += "<tr class='price-row'><td>Preis</td><td>" + gpu1.preis + "</td><td>" + gpu2.preis + "</td></tr>";
+    
     html += "</tbody></table>";
 
     document.getElementById("gpuVergleichTabelle").innerHTML = html;
