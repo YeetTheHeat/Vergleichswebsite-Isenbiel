@@ -588,38 +588,38 @@
         html += "<table class='comparison-table'>";
         html += "<thead><tr><th>Spezifikation</th><th>" + gpu1.modell + "</th><th>" + gpu2.modell + "</th></tr></thead>";
         html += "<tbody>";
-        
+
         // Hauptspezifikationen
         html += "<tr class='category-header'><td colspan='3'>Grundlegende Spezifikationen</td></tr>";
         html += "<tr><td>Hersteller</td><td>" + gpu1.marke + "</td><td>" + gpu2.marke + "</td></tr>";
         html += "<tr><td>Speicher</td><td>" + gpu1.speicher + "</td><td>" + gpu2.speicher + "</td></tr>";
         html += "<tr><td>Boost-Takt</td><td>" + gpu1.takt + "</td><td>" + gpu2.takt + "</td></tr>";
         html += "<tr><td>Stromverbrauch (TDP)</td><td>" + gpu1.tdp + "</td><td>" + gpu2.tdp + "</td></tr>";
-        
+
         // Technologie
         html += "<tr class='category-header'><td colspan='3'>Technologie-Features</td></tr>";
         html += "<tr><td>Ray-Tracing</td><td>" + gpu1.raytracing + "</td><td>" + gpu2.raytracing + "</td></tr>";
         html += "<tr><td>KI-Upscaling</td><td>" + gpu1.dlss + "</td><td>" + gpu2.dlss + "</td></tr>";
-        
+
         // Performance
         html += "<tr class='category-header'><td colspan='3'>Performance-Metrics</td></tr>";
         html += "<tr><td>3DMark Score</td><td>" + gpu1.benchmark + "</td><td>" + gpu2.benchmark + "</td></tr>";
         html += "<tr><td>4K Gaming</td><td>" + gpu1.gaming4k + "</td><td>" + gpu2.gaming4k + "</td></tr>";
         html += "<tr><td>Mining Performance</td><td>" + gpu1.mining + "</td><td>" + gpu2.mining + "</td></tr>";
-        
+
         // Preis
         html += "<tr class='category-header'><td colspan='3'>Preis</td></tr>";
         html += "<tr class='price-row'><td>Aktueller Preis</td><td>" + gpu1.preis + "</td><td>" + gpu2.preis + "</td></tr>";
-        
+
         html += "</tbody></table>";
-        
+
         // Hinzufügen von Performance-Vergleichsbalken
         html += "<div class='performance-comparison'>";
         html += "<h3>Performance-Vergleich</h3>";
         const benchmark1 = parseInt(gpu1.benchmark);
         const benchmark2 = parseInt(gpu2.benchmark);
         const maxBenchmark = Math.max(benchmark1, benchmark2);
-        
+
         html += "<div class='benchmark-bars'>";
         html += "<div class='bar-container'>";
         html += "<div class='bar' style='width: " + (benchmark1/maxBenchmark*100) + "%'></div>";
@@ -631,7 +631,7 @@
         html += "</div>";
         html += "</div>";
         html += "</div>";
-        
+
         html += "</div>";
         document.getElementById("gpuVergleichTabelle").innerHTML = html;
       } else {
@@ -824,7 +824,7 @@
             <!-- RTX 40 Series -->
             <option value="RTX 4090">Nvidia RTX 4090</option>
             <option value="RTX 4080">Nvidia RTX 4080</option>
-            <option value="RTX 4070 Ti">Nvidia RTX 4070 Ti</option>
+            <option<option value="RTX 4070 Ti">Nvidia RTX 4070 Ti</option>
             <option value="RTX 4070">Nvidia RTX 4070</option>
             <!-- RTX 30 Series -->
             <option value="RTX 3090 Ti">Nvidia RTX 3090 Ti</option>
@@ -853,22 +853,7 @@
       <div id="gpuVergleichTabelle"></div>
     </div>
   </section>
- 
-!-- Schneeflocken-Container einfügen -->
-    <div class="snowflakes">
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❄</div>
-      <div class="snowflake">❄</div>
-    </div>
-  </body>
-  </html>
+
   <!-- Footer -->
   <footer>
     <div class="container">
