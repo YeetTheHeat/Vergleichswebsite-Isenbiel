@@ -55,7 +55,7 @@ const processorDetails = [
     ddr: "DDR4/DDR5",
     pcie: "PCIe 5.0",
     preis: "599.99 €",
-    benchmark: "9200"
+    benchmark: "54255"
   },
   {
     marke: "Intel",
@@ -159,7 +159,7 @@ const processorImages = {
   'Ryzen 9 3950X': 'https://www.amd.com/system/files/processor-ryzen-9-3950x.png'
 };
 
-// GPU image URLs - replace with actual image URLs
+// GPU image URLs and details from VideoCardBenchmark.net
 const gpuDetails = [
   { 
     modell: 'RTX 4090', 
@@ -174,7 +174,7 @@ const gpuDetails = [
     tensorCores: '576',
     tdp: '450W',
     pcie: 'PCIe 4.0',
-    benchmark: '20000',
+    benchmark: '37137',
     preis: '1599 €'
   },
   {

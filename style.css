@@ -194,6 +194,14 @@ footer ul li a {
   text-decoration: none;
 }
 
+.credits {
+  font-size: 0.9em;
+  color: var(--text-color);
+  opacity: 0.8;
+  text-align: center;
+  margin: 10px 0;
+}
+
 /* Component Images */
 .gpu-image,
 .cpu-image {
