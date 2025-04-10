@@ -314,11 +314,12 @@
   <script>
     // Globale Datenstruktur mit GPU-Details
     const gpuDetails = [
+      // RTX 40 Series
       {
         marke: "Nvidia",
         modell: "RTX 4090",
         speicher: "24GB GDDR6X",
-        takt: "2235 MHz Boost",
+        takt: "2520 MHz Boost",
         tdp: "450W",
         raytracing: "3rd Gen",
         dlss: "DLSS 3.0",
@@ -331,7 +332,7 @@
         marke: "Nvidia",
         modell: "RTX 4080",
         speicher: "16GB GDDR6X",
-        takt: "2205 MHz Boost",
+        takt: "2505 MHz Boost",
         tdp: "320W",
         raytracing: "3rd Gen",
         dlss: "DLSS 3.0",
@@ -354,10 +355,103 @@
         preis: "799.99 €"
       },
       {
+        marke: "Nvidia",
+        modell: "RTX 4070",
+        speicher: "12GB GDDR6X",
+        takt: "2475 MHz Boost",
+        tdp: "200W",
+        raytracing: "3rd Gen",
+        dlss: "DLSS 3.0",
+        benchmark: "7800 Punkte (3DMark)",
+        gaming4k: "120+ FPS",
+        mining: "90 MH/s",
+        preis: "599.99 €"
+      },
+      // RTX 30 Series
+      {
+        marke: "Nvidia",
+        modell: "RTX 3090 Ti",
+        speicher: "24GB GDDR6X",
+        takt: "1860 MHz Boost",
+        tdp: "450W",
+        raytracing: "2nd Gen",
+        dlss: "DLSS 2.0",
+        benchmark: "8200 Punkte (3DMark)",
+        gaming4k: "160+ FPS",
+        mining: "130 MH/s",
+        preis: "999.99 €"
+      },
+      {
+        marke: "Nvidia",
+        modell: "RTX 3090",
+        speicher: "24GB GDDR6X",
+        takt: "1695 MHz Boost",
+        tdp: "350W",
+        raytracing: "2nd Gen",
+        dlss: "DLSS 2.0",
+        benchmark: "7900 Punkte (3DMark)",
+        gaming4k: "150+ FPS",
+        mining: "120 MH/s",
+        preis: "899.99 €"
+      },
+      {
+        marke: "Nvidia",
+        modell: "RTX 3080 Ti",
+        speicher: "12GB GDDR6X",
+        takt: "1665 MHz Boost",
+        tdp: "350W",
+        raytracing: "2nd Gen",
+        dlss: "DLSS 2.0",
+        benchmark: "7600 Punkte (3DMark)",
+        gaming4k: "140+ FPS",
+        mining: "110 MH/s",
+        preis: "799.99 €"
+      },
+      {
+        marke: "Nvidia",
+        modell: "RTX 3080",
+        speicher: "10GB GDDR6X",
+        takt: "1710 MHz Boost",
+        tdp: "320W",
+        raytracing: "2nd Gen",
+        dlss: "DLSS 2.0",
+        benchmark: "7300 Punkte (3DMark)",
+        gaming4k: "130+ FPS",
+        mining: "100 MH/s",
+        preis: "699.99 €"
+      },
+      {
+        marke: "Nvidia",
+        modell: "RTX 3070 Ti",
+        speicher: "8GB GDDR6X",
+        takt: "1770 MHz Boost",
+        tdp: "290W",
+        raytracing: "2nd Gen",
+        dlss: "DLSS 2.0",
+        benchmark: "6800 Punkte (3DMark)",
+        gaming4k: "110+ FPS",
+        mining: "80 MH/s",
+        preis: "599.99 €"
+      },
+      {
+        marke: "Nvidia",
+        modell: "RTX 3070",
+        speicher: "8GB GDDR6",
+        takt: "1725 MHz Boost",
+        tdp: "220W",
+        raytracing: "2nd Gen",
+        dlss: "DLSS 2.0",
+        benchmark: "6500 Punkte (3DMark)",
+        gaming4k: "100+ FPS",
+        mining: "70 MH/s",
+        preis: "499.99 €"
+      },
+      // AMD RX 7000 Series
+      {
         marke: "AMD",
         modell: "RX 7900 XTX",
         speicher: "24GB GDDR6",
-        takt: "2400 MHz Boost",
+        takt: "2500 MHz Boost",
         tdp: "355W",
         raytracing: "RDNA 3",
         dlss: "FSR 3.0",
@@ -370,7 +464,7 @@
         marke: "AMD",
         modell: "RX 7900 XT",
         speicher: "20GB GDDR6",
-        takt: "2200 MHz Boost",
+        takt: "2400 MHz Boost",
         tdp: "300W",
         raytracing: "RDNA 3",
         dlss: "FSR 3.0",
@@ -383,7 +477,7 @@
         marke: "AMD",
         modell: "RX 7800 XT",
         speicher: "16GB GDDR6",
-        takt: "2124 MHz Boost",
+        takt: "2430 MHz Boost",
         tdp: "263W",
         raytracing: "RDNA 3",
         dlss: "FSR 3.0",
@@ -391,6 +485,85 @@
         gaming4k: "140+ FPS",
         mining: "100 MH/s",
         preis: "599.99 €"
+      },
+      {
+        marke: "AMD",
+        modell: "RX 7700 XT",
+        speicher: "12GB GDDR6",
+        takt: "2544 MHz Boost",
+        tdp: "245W",
+        raytracing: "RDNA 3",
+        dlss: "FSR 3.0",
+        benchmark: "7200 Punkte (3DMark)",
+        gaming4k: "120+ FPS",
+        mining: "90 MH/s",
+        preis: "499.99 €"
+      },
+      // AMD RX 6000 Series
+      {
+        marke: "AMD",
+        modell: "RX 6950 XT",
+        speicher: "16GB GDDR6",
+        takt: "2310 MHz Boost",
+        tdp: "335W",
+        raytracing: "RDNA 2",
+        dlss: "FSR 2.0",
+        benchmark: "7700 Punkte (3DMark)",
+        gaming4k: "150+ FPS",
+        mining: "120 MH/s",
+        preis: "699.99 €"
+      },
+      {
+        marke: "AMD",
+        modell: "RX 6900 XT",
+        speicher: "16GB GDDR6",
+        takt: "2250 MHz Boost",
+        tdp: "300W",
+        raytracing: "RDNA 2",
+        dlss: "FSR 2.0",
+        benchmark: "7400 Punkte (3DMark)",
+        gaming4k: "140+ FPS",
+        mining: "110 MH/s",
+        preis: "649.99 €"
+      },
+      {
+        marke: "AMD",
+        modell: "RX 6800 XT",
+        speicher: "16GB GDDR6",
+        takt: "2250 MHz Boost",
+        tdp: "300W",
+        raytracing: "RDNA 2",
+        dlss: "FSR 2.0",
+        benchmark: "7000 Punkte (3DMark)",
+        gaming4k: "130+ FPS",
+        mining: "100 MH/s",
+        preis: "579.99 €"
+      },
+      {
+        marke: "AMD",
+        modell: "RX 6800",
+        speicher: "16GB GDDR6",
+        takt: "2105 MHz Boost",
+        tdp: "250W",
+        raytracing: "RDNA 2",
+        dlss: "FSR 2.0",
+        benchmark: "6600 Punkte (3DMark)",
+        gaming4k: "120+ FPS",
+        mining: "90 MH/s",
+        preis: "529.99 €"
+      },
+      {
+        marke: "AMD",
+        modell: "RX 6700 XT",
+        speicher: "12GB GDDR6",
+        takt: "2581 MHz Boost",
+        tdp: "230W",
+        raytracing: "RDNA 2",
+        dlss: "FSR 2.0",
+        benchmark: "6000 Punkte (3DMark)",
+        gaming4k: "100+ FPS",
+        mining: "80 MH/s",
+        preis: "449.99 €"
       }
     ];
 
@@ -620,23 +793,57 @@
         <div>
           <label for="gpu1">GPU 1 auswählen:</label>
           <select id="gpu1">
+            <!-- RTX 40 Series -->
             <option value="RTX 4090">Nvidia RTX 4090</option>
             <option value="RTX 4080">Nvidia RTX 4080</option>
             <option value="RTX 4070 Ti">Nvidia RTX 4070 Ti</option>
+            <option value="RTX 4070">Nvidia RTX 4070</option>
+            <!-- RTX 30 Series -->
+            <option value="RTX 3090 Ti">Nvidia RTX 3090 Ti</option>
+            <option value="RTX 3090">Nvidia RTX 3090</option>
+            <option value="RTX 3080 Ti">Nvidia RTX 3080 Ti</option>
+            <option value="RTX 3080">Nvidia RTX 3080</option>
+            <option value="RTX 3070 Ti">Nvidia RTX 3070 Ti</option>
+            <option value="RTX 3070">Nvidia RTX 3070</option>
+            <!-- RX 7000 Series -->
             <option value="RX 7900 XTX">AMD RX 7900 XTX</option>
             <option value="RX 7900 XT">AMD RX 7900 XT</option>
             <option value="RX 7800 XT">AMD RX 7800 XT</option>
+            <option value="RX 7700 XT">AMD RX 7700 XT</option>
+            <!-- RX 6000 Series -->
+            <option value="RX 6950 XT">AMD RX 6950 XT</option>
+            <option value="RX 6900 XT">AMD RX 6900 XT</option>
+            <option value="RX 6800 XT">AMD RX 6800 XT</option>
+            <option value="RX 6800">AMD RX 6800</option>
+            <option value="RX 6700 XT">AMD RX 6700 XT</option>
           </select>
         </div>
         <div>
           <label for="gpu2">GPU 2 auswählen:</label>
           <select id="gpu2">
+            <!-- RTX 40 Series -->
             <option value="RTX 4090">Nvidia RTX 4090</option>
             <option value="RTX 4080">Nvidia RTX 4080</option>
             <option value="RTX 4070 Ti">Nvidia RTX 4070 Ti</option>
+            <option value="RTX 4070">Nvidia RTX 4070</option>
+            <!-- RTX 30 Series -->
+            <option value="RTX 3090 Ti">Nvidia RTX 3090 Ti</option>
+            <option value="RTX 3090">Nvidia RTX 3090</option>
+            <option value="RTX 3080 Ti">Nvidia RTX 3080 Ti</option>
+            <option value="RTX 3080">Nvidia RTX 3080</option>
+            <option value="RTX 3070 Ti">Nvidia RTX 3070 Ti</option>
+            <option value="RTX 3070">Nvidia RTX 3070</option>
+            <!-- RX 7000 Series -->
             <option value="RX 7900 XTX">AMD RX 7900 XTX</option>
             <option value="RX 7900 XT">AMD RX 7900 XT</option>
             <option value="RX 7800 XT">AMD RX 7800 XT</option>
+            <option value="RX 7700 XT">AMD RX 7700 XT</option>
+            <!-- RX 6000 Series -->
+            <option value="RX 6950 XT">AMD RX 6950 XT</option>
+            <option value="RX 6900 XT">AMD RX 6900 XT</option>
+            <option value="RX 6800 XT">AMD RX 6800 XT</option>
+            <option value="RX 6800">AMD RX 6800</option>
+            <option value="RX 6700 XT">AMD RX 6700 XT</option>
           </select>
         </div>
         <div>
