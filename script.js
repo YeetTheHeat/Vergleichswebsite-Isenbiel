@@ -126,7 +126,7 @@ const processorDetails = [
     pcie: "PCIe 5.0",
     preis: "399.99 €",
     benchmark: "39749"
-  }
+  },
   {
     marke: "Intel",
     modell: "Core i7-13700K",
@@ -342,10 +342,22 @@ const gpuDetails = [
     pcie: 'PCIe 4.0',
     benchmark: '29774',
     preis: '899 €'
-  }
+  },
   {
-    modell: 'RTX 4080',
+    modell: 'RTX 3080 Ti',
     manufacturer: 'Nvidia',
+    architecture: 'Ampere',
+    memory: '12GB GDDR6X',
+    memoryBus: '384-bit',
+    baseClock: '1.37 GHz',
+    boostClock: '1.67 GHz',
+    cudaCores: '10240',
+    rtCores: '80',
+    tensorCores: '320',
+    tdp: '350W',
+    pcie: 'PCIe 4.0',
+    benchmark: '21559',
+    preis: '699 €'
     architecture: 'Ada Lovelace',
     memory: '16GB GDDR6X',
     memoryBus: '256-bit',
@@ -555,6 +567,26 @@ function zeigeVergleich() {
     html += "<tr class='price-row'><td>Preis</td><td>" + gpu1.preis + "</td><td>" + gpu2.preis + "</td></tr>";
     
     html += "</tbody></table>";
+
+    // Performance comparison bars
+    html += "<div class='performance-comparison'>";
+    html += "<h3>Performance-Vergleich</h3>";
+    const benchmark1 = parseInt(gpu1.benchmark);
+    const benchmark2 = parseInt(gpu2.benchmark);
+    const maxBenchmark = Math.max(benchmark1, benchmark2);
+
+    html += "<div class='benchmark-bars'>";
+    html += "<div class='bar-container'>";
+    html += "<div class='bar' style='width: " + (benchmark1 / maxBenchmark * 100) + "%'></div>";
+    html += "<span>" + gpu1.modell + ": " + benchmark1 + " Punkte</span>";
+    html += "</div>";
+    html += "<div class='bar-container'>";
+    html += "<div class='bar' style='width: " + (benchmark2 / maxBenchmark * 100) + "%'></div>";
+    html += "<span>" + gpu2.modell + ": " + benchmark2 + " Punkte</span>";
+    html += "</div>";
+    html += "</div>";
+    html += "</div>";
+    html += "</div>";
 
     document.getElementById("gpuVergleichTabelle").innerHTML = html;
   }
