@@ -320,7 +320,11 @@
         speicher: "24GB GDDR6X",
         takt: "2235 MHz Boost",
         tdp: "450W",
+        raytracing: "3rd Gen",
+        dlss: "DLSS 3.0",
         benchmark: "9500 Punkte (3DMark)",
+        gaming4k: "240+ FPS",
+        mining: "180 MH/s",
         preis: "1599.99 €"
       },
       {
@@ -329,8 +333,25 @@
         speicher: "16GB GDDR6X",
         takt: "2205 MHz Boost",
         tdp: "320W",
+        raytracing: "3rd Gen",
+        dlss: "DLSS 3.0",
         benchmark: "8800 Punkte (3DMark)",
+        gaming4k: "180+ FPS",
+        mining: "140 MH/s",
         preis: "1199.99 €"
+      },
+      {
+        marke: "Nvidia",
+        modell: "RTX 4070 Ti",
+        speicher: "12GB GDDR6X",
+        takt: "2610 MHz Boost",
+        tdp: "285W",
+        raytracing: "3rd Gen",
+        dlss: "DLSS 3.0",
+        benchmark: "8200 Punkte (3DMark)",
+        gaming4k: "140+ FPS",
+        mining: "110 MH/s",
+        preis: "799.99 €"
       },
       {
         marke: "AMD",
@@ -338,7 +359,11 @@
         speicher: "24GB GDDR6",
         takt: "2400 MHz Boost",
         tdp: "355W",
+        raytracing: "RDNA 3",
+        dlss: "FSR 3.0",
         benchmark: "9000 Punkte (3DMark)",
+        gaming4k: "200+ FPS",
+        mining: "160 MH/s",
         preis: "999.99 €"
       },
       {
@@ -347,8 +372,25 @@
         speicher: "20GB GDDR6",
         takt: "2200 MHz Boost",
         tdp: "300W",
+        raytracing: "RDNA 3",
+        dlss: "FSR 3.0",
         benchmark: "8500 Punkte (3DMark)",
+        gaming4k: "180+ FPS",
+        mining: "140 MH/s",
         preis: "899.99 €"
+      },
+      {
+        marke: "AMD",
+        modell: "RX 7800 XT",
+        speicher: "16GB GDDR6",
+        takt: "2124 MHz Boost",
+        tdp: "263W",
+        raytracing: "RDNA 3",
+        dlss: "FSR 3.0",
+        benchmark: "7800 Punkte (3DMark)",
+        gaming4k: "140+ FPS",
+        mining: "100 MH/s",
+        preis: "599.99 €"
       }
     ];
 
@@ -359,28 +401,65 @@
       const modell1 = select1.value;
       const modell2 = select2.value;
 
-      // Wenn beide Modelle identisch gewählt sind, Hinweis anzeigen
       if (modell1 === modell2) {
         document.getElementById("gpuVergleichTabelle").innerHTML =
           "<p style='text-align:center; color:red;'>Bitte wähle zwei unterschiedliche GPUs aus.</p>";
         return;
       }
 
-      // Suche die Details der ausgewählten Modelle
       const gpu1 = gpuDetails.find(gpu => gpu.modell === modell1);
       const gpu2 = gpuDetails.find(gpu => gpu.modell === modell2);
 
       if (gpu1 && gpu2) {
-        let html = "<table>";
-        html += "<thead><tr><th>Detail</th><th>" + gpu1.modell + "</th><th>" + gpu2.modell + "</th></tr></thead>";
+        let html = "<div class='comparison-container'>";
+        html += "<table class='comparison-table'>";
+        html += "<thead><tr><th>Spezifikation</th><th>" + gpu1.modell + "</th><th>" + gpu2.modell + "</th></tr></thead>";
         html += "<tbody>";
-        html += "<tr><td>Marke</td><td>" + gpu1.marke + "</td><td>" + gpu2.marke + "</td></tr>";
+        
+        // Hauptspezifikationen
+        html += "<tr class='category-header'><td colspan='3'>Grundlegende Spezifikationen</td></tr>";
+        html += "<tr><td>Hersteller</td><td>" + gpu1.marke + "</td><td>" + gpu2.marke + "</td></tr>";
         html += "<tr><td>Speicher</td><td>" + gpu1.speicher + "</td><td>" + gpu2.speicher + "</td></tr>";
-        html += "<tr><td>Takt</td><td>" + gpu1.takt + "</td><td>" + gpu2.takt + "</td></tr>";
-        html += "<tr><td>TDP</td><td>" + gpu1.tdp + "</td><td>" + gpu2.tdp + "</td></tr>";
-        html += "<tr><td>Benchmark</td><td>" + gpu1.benchmark + "</td><td>" + gpu2.benchmark + "</td></tr>";
-        html += "<tr><td>Preis</td><td>" + gpu1.preis + "</td><td>" + gpu2.preis + "</td></tr>";
+        html += "<tr><td>Boost-Takt</td><td>" + gpu1.takt + "</td><td>" + gpu2.takt + "</td></tr>";
+        html += "<tr><td>Stromverbrauch (TDP)</td><td>" + gpu1.tdp + "</td><td>" + gpu2.tdp + "</td></tr>";
+        
+        // Technologie
+        html += "<tr class='category-header'><td colspan='3'>Technologie-Features</td></tr>";
+        html += "<tr><td>Ray-Tracing</td><td>" + gpu1.raytracing + "</td><td>" + gpu2.raytracing + "</td></tr>";
+        html += "<tr><td>KI-Upscaling</td><td>" + gpu1.dlss + "</td><td>" + gpu2.dlss + "</td></tr>";
+        
+        // Performance
+        html += "<tr class='category-header'><td colspan='3'>Performance-Metrics</td></tr>";
+        html += "<tr><td>3DMark Score</td><td>" + gpu1.benchmark + "</td><td>" + gpu2.benchmark + "</td></tr>";
+        html += "<tr><td>4K Gaming</td><td>" + gpu1.gaming4k + "</td><td>" + gpu2.gaming4k + "</td></tr>";
+        html += "<tr><td>Mining Performance</td><td>" + gpu1.mining + "</td><td>" + gpu2.mining + "</td></tr>";
+        
+        // Preis
+        html += "<tr class='category-header'><td colspan='3'>Preis</td></tr>";
+        html += "<tr class='price-row'><td>Aktueller Preis</td><td>" + gpu1.preis + "</td><td>" + gpu2.preis + "</td></tr>";
+        
         html += "</tbody></table>";
+        
+        // Hinzufügen von Performance-Vergleichsbalken
+        html += "<div class='performance-comparison'>";
+        html += "<h3>Performance-Vergleich</h3>";
+        const benchmark1 = parseInt(gpu1.benchmark);
+        const benchmark2 = parseInt(gpu2.benchmark);
+        const maxBenchmark = Math.max(benchmark1, benchmark2);
+        
+        html += "<div class='benchmark-bars'>";
+        html += "<div class='bar-container'>";
+        html += "<div class='bar' style='width: " + (benchmark1/maxBenchmark*100) + "%'></div>";
+        html += "<span>" + gpu1.modell + ": " + benchmark1 + " Punkte</span>";
+        html += "</div>";
+        html += "<div class='bar-container'>";
+        html += "<div class='bar' style='width: " + (benchmark2/maxBenchmark*100) + "%'></div>";
+        html += "<span>" + gpu2.modell + ": " + benchmark2 + " Punkte</span>";
+        html += "</div>";
+        html += "</div>";
+        html += "</div>";
+        
+        html += "</div>";
         document.getElementById("gpuVergleichTabelle").innerHTML = html;
       } else {
         document.getElementById("gpuVergleichTabelle").innerHTML =
@@ -543,8 +622,10 @@
           <select id="gpu1">
             <option value="RTX 4090">Nvidia RTX 4090</option>
             <option value="RTX 4080">Nvidia RTX 4080</option>
+            <option value="RTX 4070 Ti">Nvidia RTX 4070 Ti</option>
             <option value="RX 7900 XTX">AMD RX 7900 XTX</option>
             <option value="RX 7900 XT">AMD RX 7900 XT</option>
+            <option value="RX 7800 XT">AMD RX 7800 XT</option>
           </select>
         </div>
         <div>
@@ -552,8 +633,10 @@
           <select id="gpu2">
             <option value="RTX 4090">Nvidia RTX 4090</option>
             <option value="RTX 4080">Nvidia RTX 4080</option>
+            <option value="RTX 4070 Ti">Nvidia RTX 4070 Ti</option>
             <option value="RX 7900 XTX">AMD RX 7900 XTX</option>
             <option value="RX 7900 XT">AMD RX 7900 XT</option>
+            <option value="RX 7800 XT">AMD RX 7800 XT</option>
           </select>
         </div>
         <div>
