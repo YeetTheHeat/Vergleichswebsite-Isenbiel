@@ -99,12 +99,79 @@
   animation-duration: 11s;
   animation-delay: 1.3s;
 }
+/* Tech Theme Styles */
+body {
+  background: #0a0e17;
+  color: #e0e0e0;
+}
+
+header {
+  background: #151b28;
+  border-bottom: 2px solid #2a5adf;
+}
+
+.hero {
+  background: linear-gradient(45deg, #151b28, #1a2333);
+  border-bottom: 2px solid #2a5adf;
+}
+
+.categories, .product-list, .vergleich, .detail, .gpu-vergleich {
+  background: #151b28;
+}
+
+.category-list li a {
+  background: #1a2333;
+  color: #e0e0e0;
+  border: 1px solid #2a5adf;
+  transition: all 0.3s ease;
+}
+
+.category-list li a:hover {
+  background: #2a5adf;
+  transform: translateY(-2px);
+}
+
 /* Comparison Styles */
 .comparison-container {
-  background: white;
+  background: #1a2333;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid #2a5adf;
+  box-shadow: 0 0 20px rgba(42, 90, 223, 0.1);
+}
+
+.comparison-table th,
+.comparison-table td {
+  border: 1px solid #2a5adf;
+  color: #e0e0e0;
+}
+
+.comparison-table th {
+  background-color: #151b28;
+}
+
+.category-header {
+  background-color: #2a5adf;
+  color: white;
+}
+
+.gpu-image {
+  width: 200px;
+  height: auto;
+  margin: 10px auto;
+  border-radius: 8px;
+  border: 1px solid #2a5adf;
+}
+
+.gpu-specs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.bar {
+  background: linear-gradient(90deg, #2a5adf, #64a0ff);
+  box-shadow: 0 0 10px rgba(42, 90, 223, 0.3);
 }
 
 .comparison-table {

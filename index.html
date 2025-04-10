@@ -585,6 +585,14 @@
 
       if (gpu1 && gpu2) {
         let html = "<div class='comparison-container'>";
+        html += "<div class='gpu-specs'>";
+        html += "<div class='gpu-image-container'>";
+        html += "<img src='https://assets.replit.com/images/gpu/" + gpu1.modell.toLowerCase().replace(/\s/g, '') + ".jpg' alt='" + gpu1.modell + "' class='gpu-image' onerror=\"this.src='https://assets.replit.com/images/gpu/default.jpg'\">";
+        html += "</div>";
+        html += "<div class='gpu-image-container'>";
+        html += "<img src='https://assets.replit.com/images/gpu/" + gpu2.modell.toLowerCase().replace(/\s/g, '') + ".jpg' alt='" + gpu2.modell + "' class='gpu-image' onerror=\"this.src='https://assets.replit.com/images/gpu/default.jpg'\">";
+        html += "</div>";
+        html += "</div>";
         html += "<table class='comparison-table'>";
         html += "<thead><tr><th>Spezifikation</th><th>" + gpu1.modell + "</th><th>" + gpu2.modell + "</th></tr></thead>";
         html += "<tbody>";
