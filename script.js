@@ -69,7 +69,7 @@ const processorDetails = [
     ddr: "DDR4/DDR5",
     pcie: "PCIe 5.0",
     preis: "419.99 €",
-    benchmark: "8500"
+    benchmark: "44362"
   },
   // Intel 12th Gen
   {
@@ -84,7 +84,7 @@ const processorDetails = [
     ddr: "DDR4/DDR5",
     pcie: "PCIe 5.0",
     preis: "449.99 €",
-    benchmark: "8000"
+    benchmark: "41647"
   },
   // Intel 11th Gen
   {
@@ -99,7 +99,7 @@ const processorDetails = [
     ddr: "DDR4",
     pcie: "PCIe 4.0",
     preis: "399.99 €",
-    benchmark: "7200"
+    benchmark: "24824"
   },
   // AMD Ryzen 7000
   {
@@ -114,7 +114,7 @@ const processorDetails = [
     ddr: "DDR5",
     pcie: "PCIe 5.0",
     preis: "699.99 €",
-    benchmark: "9100"
+    benchmark: "51215"
   },
   // AMD Ryzen 5000
   {
@@ -129,7 +129,7 @@ const processorDetails = [
     ddr: "DDR4",
     pcie: "PCIe 4.0",
     preis: "549.99 €",
-    benchmark: "8300"
+    benchmark: "39473"
   },
   // AMD Ryzen 3000
   {
@@ -144,7 +144,7 @@ const processorDetails = [
     ddr: "DDR4",
     pcie: "PCIe 4.0",
     preis: "449.99 €",
-    benchmark: "7500"
+    benchmark: "32768"
   }
 ];
 
@@ -190,7 +190,7 @@ const gpuDetails = [
     tensorCores: '304',
     tdp: '320W',
     pcie: 'PCIe 4.0',
-    benchmark: '18000',
+    benchmark: '29932',
     preis: '1199 €'
   },
   {
@@ -206,7 +206,7 @@ const gpuDetails = [
     aiAccelerators: '192',
     tdp: '355W',
     pcie: 'PCIe 4.0',
-    benchmark: '19000',
+    benchmark: '32318',
     preis: '999 €'
   },
   {
@@ -222,7 +222,7 @@ const gpuDetails = [
     aiAccelerators: '168',
     tdp: '315W',
     pcie: 'PCIe 4.0',
-    benchmark: '17500',
+    benchmark: '29774',
     preis: '899 €'
   }
 ];
