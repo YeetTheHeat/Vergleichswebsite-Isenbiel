@@ -1,5 +1,5 @@
-// Section Management
-function showSection(sectionId) {
+// Make showSection globally available
+window.showSection = function(sectionId) {
   document.querySelectorAll('section').forEach(section => {
     section.classList.add('hidden');
   });
@@ -247,6 +247,103 @@ const gpuDetails = [
     benchmark: '37137',
     preis: '1599 €'
   },
+  {
+    modell: 'RTX 4080',
+    manufacturer: 'Nvidia',
+    architecture: 'Ada Lovelace',
+    memory: '16GB GDDR6X',
+    memoryBus: '256-bit',
+    baseClock: '2.21 GHz',
+    boostClock: '2.51 GHz',
+    cudaCores: '9728',
+    rtCores: '76',
+    tensorCores: '304',
+    tdp: '320W',
+    pcie: 'PCIe 4.0',
+    benchmark: '29932',
+    preis: '1199 €'
+  },
+  {
+    modell: 'RTX 4070 Ti',
+    manufacturer: 'Nvidia',
+    architecture: 'Ada Lovelace',
+    memory: '12GB GDDR6X',
+    memoryBus: '192-bit',
+    baseClock: '2.31 GHz',
+    boostClock: '2.61 GHz',
+    cudaCores: '7680',
+    rtCores: '60',
+    tensorCores: '240',
+    tdp: '285W',
+    pcie: 'PCIe 4.0',
+    benchmark: '27524',
+    preis: '799 €'
+  },
+  {
+    modell: 'RTX 4070',
+    manufacturer: 'Nvidia',
+    architecture: 'Ada Lovelace',
+    memory: '12GB GDDR6X',
+    memoryBus: '192-bit',
+    baseClock: '1.92 GHz',
+    boostClock: '2.48 GHz',
+    cudaCores: '5888',
+    rtCores: '46',
+    tensorCores: '184',
+    tdp: '200W',
+    pcie: 'PCIe 4.0',
+    benchmark: '24939',
+    preis: '599 €'
+  },
+  {
+    modell: 'RTX 3090 Ti',
+    manufacturer: 'Nvidia',
+    architecture: 'Ampere',
+    memory: '24GB GDDR6X',
+    memoryBus: '384-bit',
+    baseClock: '1.67 GHz',
+    boostClock: '1.86 GHz',
+    cudaCores: '10752',
+    rtCores: '84',
+    tensorCores: '336',
+    tdp: '450W',
+    pcie: 'PCIe 4.0',
+    benchmark: '23393',
+    preis: '999 €'
+  },
+  {
+    modell: 'RX 7900 XTX',
+    manufacturer: 'AMD',
+    architecture: 'RDNA 3',
+    memory: '24GB GDDR6',
+    memoryBus: '384-bit',
+    baseClock: '1.9 GHz',
+    boostClock: '2.5 GHz',
+    streamProcessors: '12288',
+    rayAccelerators: '96',
+    aiAccelerators: '192',
+    tdp: '355W',
+    pcie: 'PCIe 4.0',
+    benchmark: '32318',
+    preis: '999 €'
+  },
+  {
+    modell: 'RX 7900 XT',
+    manufacturer: 'AMD',
+    architecture: 'RDNA 3',
+    memory: '20GB GDDR6',
+    memoryBus: '320-bit',
+    baseClock: '1.5 GHz',
+    boostClock: '2.4 GHz',
+    streamProcessors: '10752',
+    rayAccelerators: '84',
+    aiAccelerators: '168',
+    tdp: '315W',
+    pcie: 'PCIe 4.0',
+    benchmark: '29774',
+    preis: '899 €'
+  }
+];
   {
     modell: 'RTX 4080',
     manufacturer: 'Nvidia',
