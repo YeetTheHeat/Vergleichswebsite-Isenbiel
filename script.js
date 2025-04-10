@@ -358,50 +358,6 @@ const gpuDetails = [
     pcie: 'PCIe 4.0',
     benchmark: '21559',
     preis: '699 €'
-    architecture: 'Ada Lovelace',
-    memory: '16GB GDDR6X',
-    memoryBus: '256-bit',
-    baseClock: '2.21 GHz',
-    boostClock: '2.51 GHz',
-    cudaCores: '9728',
-    rtCores: '76',
-    tensorCores: '304',
-    tdp: '320W',
-    pcie: 'PCIe 4.0',
-    benchmark: '29932',
-    preis: '1199 €'
-  },
-  {
-    modell: 'RX 7900 XTX',
-    manufacturer: 'AMD',
-    architecture: 'RDNA 3',
-    memory: '24GB GDDR6',
-    memoryBus: '384-bit',
-    baseClock: '1.9 GHz',
-    boostClock: '2.5 GHz',
-    streamProcessors: '12288',
-    rayAccelerators: '96',
-    aiAccelerators: '192',
-    tdp: '355W',
-    pcie: 'PCIe 4.0',
-    benchmark: '32318',
-    preis: '999 €'
-  },
-  {
-    modell: 'RX 7900 XT',
-    manufacturer: 'AMD',
-    architecture: 'RDNA 3',
-    memory: '20GB GDDR6',
-    memoryBus: '320-bit',
-    baseClock: '1.5 GHz',
-    boostClock: '2.4 GHz',
-    streamProcessors: '10752',
-    rayAccelerators: '84',
-    aiAccelerators: '168',
-    tdp: '315W',
-    pcie: 'PCIe 4.0',
-    benchmark: '29774',
-    preis: '899 €'
   }
 ];
 
@@ -529,19 +485,19 @@ function zeigeVergleich() {
     html += "<table class='comparison-table'>";
     html += "<thead><tr><th>Spezifikation</th><th>" + gpu1.modell + "</th><th>" + gpu2.modell + "</th></tr></thead>";
     html += "<tbody>";
-    
+
     // Basic Specifications
     html += "<tr class='category-header'><td colspan='3'>Grundlegende Spezifikationen</td></tr>";
     html += "<tr><td>Hersteller</td><td>" + gpu1.manufacturer + "</td><td>" + gpu2.manufacturer + "</td></tr>";
     html += "<tr><td>Architektur</td><td>" + gpu1.architecture + "</td><td>" + gpu2.architecture + "</td></tr>";
     html += "<tr><td>Basis-Takt</td><td>" + gpu1.baseClock + "</td><td>" + gpu2.baseClock + "</td></tr>";
     html += "<tr><td>Boost-Takt</td><td>" + gpu1.boostClock + "</td><td>" + gpu2.boostClock + "</td></tr>";
-    
+
     // Memory Specifications
     html += "<tr class='category-header'><td colspan='3'>Speicher-Spezifikationen</td></tr>";
     html += "<tr><td>Speicher</td><td>" + gpu1.memory + "</td><td>" + gpu2.memory + "</td></tr>";
     html += "<tr><td>Speicherbus</td><td>" + gpu1.memoryBus + "</td><td>" + gpu2.memoryBus + "</td></tr>";
-    
+
     // Processing Units
     html += "<tr class='category-header'><td colspan='3'>Recheneinheiten</td></tr>";
     if (gpu1.manufacturer === 'Nvidia' && gpu2.manufacturer === 'Nvidia') {
@@ -555,17 +511,17 @@ function zeigeVergleich() {
     } else {
       html += "<tr><td>Processing Units</td><td>" + (gpu1.cudaCores || gpu1.streamProcessors) + "</td><td>" + (gpu2.cudaCores || gpu2.streamProcessors) + "</td></tr>";
     }
-    
+
     // Power & Interface
     html += "<tr class='category-header'><td colspan='3'>Stromverbrauch & Schnittstelle</td></tr>";
     html += "<tr><td>TDP</td><td>" + gpu1.tdp + "</td><td>" + gpu2.tdp + "</td></tr>";
     html += "<tr><td>PCIe Version</td><td>" + gpu1.pcie + "</td><td>" + gpu2.pcie + "</td></tr>";
-    
+
     // Performance & Price
     html += "<tr class='category-header'><td colspan='3'>Performance & Preis</td></tr>";
     html += "<tr><td>Benchmark Score</td><td>" + gpu1.benchmark + "</td><td>" + gpu2.benchmark + "</td></tr>";
     html += "<tr class='price-row'><td>Preis</td><td>" + gpu1.preis + "</td><td>" + gpu2.preis + "</td></tr>";
-    
+
     html += "</tbody></table>";
 
     // Performance comparison bars
