@@ -1,3 +1,45 @@
+// Section Management
+function showSection(sectionId) {
+  document.querySelectorAll('section').forEach(section => {
+    section.classList.add('hidden');
+  });
+  document.getElementById(sectionId).classList.remove('hidden');
+}
+
+// Initialize selects on page load
+document.addEventListener('DOMContentLoaded', () => {
+  // GPU Select Options
+  const gpuSelects = ['gpu1', 'gpu2'];
+  gpuSelects.forEach(selectId => {
+    const select = document.getElementById(selectId);
+    if (select) {
+      gpuDetails.forEach(gpu => {
+        const option = document.createElement('option');
+        option.value = gpu.modell;
+        option.textContent = gpu.modell;
+        select.appendChild(option);
+      });
+    }
+  });
+
+  // CPU Select Options
+  const cpuSelects = ['cpu1', 'cpu2'];
+  cpuSelects.forEach(selectId => {
+    const select = document.getElementById(selectId);
+    if (select) {
+      processorDetails.forEach(cpu => {
+        const option = document.createElement('option');
+        option.value = cpu.modell;
+        option.textContent = cpu.modell;
+        select.appendChild(option);
+      });
+    }
+  });
+
+  // Set home screen as active
+  showSection('home-screen');
+});
+
 // Processor data
 const processorDetails = [
   // Intel 13th Gen
@@ -118,6 +160,28 @@ const processorImages = {
 };
 
 // GPU image URLs - replace with actual image URLs
+const gpuDetails = [
+  { modell: 'RTX 4090',  manufacturer: 'Nvidia', memory: '24GB', benchmark: '20000' },
+  { modell: 'RTX 4080',  manufacturer: 'Nvidia', memory: '16GB', benchmark: '18000' },
+  { modell: 'RTX 4070 Ti', manufacturer: 'Nvidia', memory: '12GB', benchmark: '15000' },
+  { modell: 'RTX 4070',  manufacturer: 'Nvidia', memory: '12GB', benchmark: '14000' },
+  { modell: 'RTX 3090 Ti', manufacturer: 'Nvidia', memory: '24GB', benchmark: '12000' },
+  { modell: 'RTX 3090',  manufacturer: 'Nvidia', memory: '24GB', benchmark: '11000' },
+  { modell: 'RTX 3080 Ti', manufacturer: 'Nvidia', memory: '12GB', benchmark: '10000' },
+  { modell: 'RTX 3080',  manufacturer: 'Nvidia', memory: '10GB', benchmark: '9500' },
+  { modell: 'RTX 3070 Ti', manufacturer: 'Nvidia', memory: '8GB',  benchmark: '8500' },
+  { modell: 'RTX 3070',  manufacturer: 'Nvidia', memory: '8GB',  benchmark: '8000' },
+  { modell: 'RX 7900 XTX', manufacturer: 'AMD',   memory: '24GB', benchmark: '19000' },
+  { modell: 'RX 7900 XT', manufacturer: 'AMD',   memory: '20GB', benchmark: '17500' },
+  { modell: 'RX 7800 XT', manufacturer: 'AMD',   memory: '16GB', benchmark: '16000' },
+  { modell: 'RX 7700 XT', manufacturer: 'AMD',   memory: '12GB', benchmark: '14500' },
+  { modell: 'RX 6950 XT', manufacturer: 'AMD',   memory: '16GB', benchmark: '11500' },
+  { modell: 'RX 6900 XT', manufacturer: 'AMD',   memory: '16GB', benchmark: '11000' },
+  { modell: 'RX 6800 XT', manufacturer: 'AMD',   memory: '16GB', benchmark: '10500' },
+  { modell: 'RX 6800',  manufacturer: 'AMD',   memory: '16GB', benchmark: '10000' },
+  { modell: 'RX 6700 XT', manufacturer: 'AMD',   memory: '12GB', benchmark: '9000' }
+];
+
 const gpuImages = {
   'RTX 4090': 'https://assets.nvidia.partners/images/png/nvidia-geforce-rtx-4090.png',
   'RTX 4080': 'https://assets.nvidia.partners/images/png/nvidia-geforce-rtx-4080.png',
@@ -139,6 +203,7 @@ const gpuImages = {
   'RX 6800': 'https://www.amd.com/system/files/products/6800.png',
   'RX 6700 XT': 'https://www.amd.com/system/files/products/6700xt.png'
 };
+
 
 function zeigeProcessorVergleich() {
   const select1 = document.getElementById("cpu1");
@@ -199,11 +264,11 @@ function zeigeProcessorVergleich() {
 
     html += "<div class='benchmark-bars'>";
     html += "<div class='bar-container'>";
-    html += "<div class='bar' style='width: " + (benchmark1/maxBenchmark*100) + "%'></div>";
+    html += "<div class='bar' style='width: " + (benchmark1 / maxBenchmark * 100) + "%'></div>";
     html += "<span>" + cpu1.modell + ": " + benchmark1 + " Punkte</span>";
     html += "</div>";
     html += "<div class='bar-container'>";
-    html += "<div class='bar' style='width: " + (benchmark2/maxBenchmark*100) + "%'></div>";
+    html += "<div class='bar' style='width: " + (benchmark2 / maxBenchmark * 100) + "%'></div>";
     html += "<span>" + cpu2.modell + ": " + benchmark2 + " Punkte</span>";
     html += "</div>";
     html += "</div>";
@@ -238,9 +303,14 @@ function zeigeVergleich() {
     html += `<div style='text-align: center;'><img src='${gpuImages[gpu2.modell]}' alt='${gpu2.modell}' class='gpu-image'><h3>${gpu2.modell}</h3></div>`;
     html += "</div>";
 
-    //  Comparison table code (needs to be added from original, which is currently missing)
     html += "<table class='comparison-table'>";
-    html += "</table>"; //Placeholder - needs actual table data
+    html += "<thead><tr><th>Spezifikation</th><th>" + gpu1.modell + "</th><th>" + gpu2.modell + "</th></tr></thead>";
+    html += "<tbody>";
+    html += "<tr><td>Hersteller</td><td>" + gpu1.manufacturer + "</td><td>" + gpu2.manufacturer + "</td></tr>";
+    html += "<tr><td>Speicher</td><td>" + gpu1.memory + "</td><td>" + gpu2.memory + "</td></tr>";
+    html += "<tr><td>Benchmark</td><td>" + gpu1.benchmark + "</td><td>" + gpu2.benchmark + "</td></tr>";
+    html += "</tbody></table>";
+
     document.getElementById("gpuVergleichTabelle").innerHTML = html;
   }
 }

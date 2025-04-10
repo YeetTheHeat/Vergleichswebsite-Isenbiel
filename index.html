@@ -3,833 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vergleichswebsite für Computerkomponenten</title>
-  <style>
-    /* Reset und Basis-Styling */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-      overflow: hidden;
-    }
-    /* Header und Navigation */
-    header {
-      background: #333;
-      color: #fff;
-      padding: 20px 0;
-    }
-    header .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header .logo h1 {
-      margin: 0;
-    }
-    header nav ul {
-      list-style: none;
-      display: flex;
-    }
-    header nav ul li {
-      margin-left: 20px;
-    }
-    header nav ul li a {
-      color: #fff;
-      text-decoration: none;
-    }
-    /* Hero-Bereich */
-    .hero {
-      background: url('hero-bg.jpg') no-repeat center center/cover;
-      color: #fff;
-      padding: 100px 0;
-      text-align: center;
-    }
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-    }
-    .hero .cta {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #e8491d;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    /* Kategorien */
-    .categories {
-      padding: 40px 0;
-      background: #fff;
-    }
-    .categories h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .category-list {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-    }
-    .category-list li {
-      margin: 0 10px;
-    }
-    .category-list li a {
-      text-decoration: none;
-      color: #333;
-      background: #e2e2e2;
-      padding: 10px 15px;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-    .category-list li a:hover {
-      background: #ccc;
-    }
-    /* Produktliste (Übersichtsseite) */
-    .product-list {
-      padding: 40px 0;
-    }
-    .product-list h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .filter {
-      text-align: center;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .product-card {
-      background: #fff;
-      border: 1px solid #ddd;
-      width: calc(25% - 20px);
-      padding: 20px;
-      text-align: center;
-      border-radius: 5px;
-      transition: box-shadow 0.3s;
-    }
-    .product-card:hover {
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .product-card img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 5px;
-    }
-    .product-card h3 {
-      margin: 10px 0;
-    }
-    .product-card a {
-      text-decoration: none;
-      color: #e8491d;
-    }
-    /* Vergleichsbereich (statische Tabelle als Beispiel) */
-    .vergleich {
-      padding: 40px 0;
-      background: #fff;
-    }
-    .vergleich h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .vergleich table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .vergleich th,
-    .vergleich td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    .vergleich th {
-      background: #f4f4f4;
-    }
-    /* Detailseite */
-    .detail {
-      padding: 40px 0;
-      background: #f9f9f9;
-    }
-    .detail h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .detail-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    .detail-content img {
-      max-width: 400px;
-      border-radius: 5px;
-    }
-    .detail-info {
-      flex: 1;
-      max-width: 600px;
-    }
-    .detail-info h3 {
-      margin-bottom: 10px;
-    }
-    .detail-info p {
-      margin-bottom: 15px;
-    }
-    .detail-info .benchmark,
-    .detail-info .price-widget {
-      background: #fff;
-      padding: 15px;
-      margin-bottom: 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-    .detail-info h4 {
-      margin-bottom: 10px;
-    }
-    /* Button für den Preisvergleich im Detailbereich */
-    .price-widget button {
-      padding: 8px 12px;
-      font-size: 14px;
-      background: #e8491d;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    /* Neuer Abschnitt: Vergleich von zwei GPUs */
-    .gpu-vergleich {
-      padding: 40px 0;
-      background: #fff;
-    }
-    .gpu-vergleich h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .auswahl {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .auswahl label {
-      margin-right: 5px;
-    }
-    .auswahl select {
-      padding: 5px 10px;
-      font-size: 16px;
-    }
-    .auswahl button {
-      padding: 8px 12px;
-      font-size: 16px;
-      background: #e8491d;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #gpuVergleichTabelle {
-      margin-top: 20px;
-      overflow-x: auto;
-    }
-    #gpuVergleichTabelle table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    #gpuVergleichTabelle th,
-    #gpuVergleichTabelle td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-    }
-    #gpuVergleichTabelle th {
-      background: #f4f4f4;
-    }
-    /* Footer */
-    footer {
-      background: #333;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
-    footer ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
-    footer ul li {
-      margin: 0 10px;
-    }
-    footer ul li a {
-      color: #fff;
-      text-decoration: none;
-    }
-    /* Responsive Anpassungen */
-    @media (max-width: 768px) {
-      .product-card {
-        width: calc(50% - 20px);
-      }
-      .detail-content {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-    @media (max-width: 480px) {
-      .product-card {
-        width: 100%;
-      }
-      header .container {
-        flex-direction: column;
-      }
-      header nav ul {
-        flex-direction: column;
-        margin-top: 10px;
-      }
-      header nav ul li {
-        margin: 5px 0;
-      }
-    }
-  </style>
-  <script>
-    // Globale Datenstruktur mit GPU-Details
-    const gpuDetails = [
-      // RTX 40 Series
-      {
-        marke: "Nvidia",
-        modell: "RTX 4090",
-        speicher: "24GB GDDR6X",
-        takt: "2520 MHz Boost",
-        tdp: "450W",
-        raytracing: "3rd Gen",
-        dlss: "DLSS 3.0",
-        benchmark: "9500 Punkte (3DMark)",
-        gaming4k: "240+ FPS",
-        mining: "180 MH/s",
-        preis: "1599.99 €"
-      },
-      {
-        marke: "Nvidia",
-        modell: "RTX 4080",
-        speicher: "16GB GDDR6X",
-        takt: "2505 MHz Boost",
-        tdp: "320W",
-        raytracing: "3rd Gen",
-        dlss: "DLSS 3.0",
-        benchmark: "8800 Punkte (3DMark)",
-        gaming4k: "180+ FPS",
-        mining: "140 MH/s",
-        preis: "1199.99 €"
-      },
-      {
-        marke: "Nvidia",
-        modell: "RTX 4070 Ti",
-        speicher: "12GB GDDR6X",
-        takt: "2610 MHz Boost",
-        tdp: "285W",
-        raytracing: "3rd Gen",
-        dlss: "DLSS 3.0",
-        benchmark: "8200 Punkte (3DMark)",
-        gaming4k: "140+ FPS",
-        mining: "110 MH/s",
-        preis: "799.99 €"
-      },
-      {
-        marke: "Nvidia",
-        modell: "RTX 4070",
-        speicher: "12GB GDDR6X",
-        takt: "2475 MHz Boost",
-        tdp: "200W",
-        raytracing: "3rd Gen",
-        dlss: "DLSS 3.0",
-        benchmark: "7800 Punkte (3DMark)",
-        gaming4k: "120+ FPS",
-        mining: "90 MH/s",
-        preis: "599.99 €"
-      },
-      // RTX 30 Series
-      {
-        marke: "Nvidia",
-        modell: "RTX 3090 Ti",
-        speicher: "24GB GDDR6X",
-        takt: "1860 MHz Boost",
-        tdp: "450W",
-        raytracing: "2nd Gen",
-        dlss: "DLSS 2.0",
-        benchmark: "8200 Punkte (3DMark)",
-        gaming4k: "160+ FPS",
-        mining: "130 MH/s",
-        preis: "999.99 €"
-      },
-      {
-        marke: "Nvidia",
-        modell: "RTX 3090",
-        speicher: "24GB GDDR6X",
-        takt: "1695 MHz Boost",
-        tdp: "350W",
-        raytracing: "2nd Gen",
-        dlss: "DLSS 2.0",
-        benchmark: "7900 Punkte (3DMark)",
-        gaming4k: "150+ FPS",
-        mining: "120 MH/s",
-        preis: "899.99 €"
-      },
-      {
-        marke: "Nvidia",
-        modell: "RTX 3080 Ti",
-        speicher: "12GB GDDR6X",
-        takt: "1665 MHz Boost",
-        tdp: "350W",
-        raytracing: "2nd Gen",
-        dlss: "DLSS 2.0",
-        benchmark: "7600 Punkte (3DMark)",
-        gaming4k: "140+ FPS",
-        mining: "110 MH/s",
-        preis: "799.99 €"
-      },
-      {
-        marke: "Nvidia",
-        modell: "RTX 3080",
-        speicher: "10GB GDDR6X",
-        takt: "1710 MHz Boost",
-        tdp: "320W",
-        raytracing: "2nd Gen",
-        dlss: "DLSS 2.0",
-        benchmark: "7300 Punkte (3DMark)",
-
-  <!-- Processor comparison section -->
-  <section class="processor-vergleich">
-    <div class="container">
-      <h2>Vergleiche zwei Prozessoren</h2>
-      <div class="auswahl">
-        <div>
-          <label for="cpu1">CPU 1 auswählen:</label>
-          <select id="cpu1">
-            <option value="Core i9-13900K">Intel Core i9-13900K</option>
-            <option value="Core i7-13700K">Intel Core i7-13700K</option>
-            <option value="Core i9-12900K">Intel Core i9-12900K</option>
-            <option value="Core i9-11900K">Intel Core i9-11900K</option>
-            <option value="Ryzen 9 7950X">AMD Ryzen 9 7950X</option>
-            <option value="Ryzen 9 5950X">AMD Ryzen 9 5950X</option>
-            <option value="Ryzen 9 3950X">AMD Ryzen 9 3950X</option>
-          </select>
-        </div>
-        <div>
-          <label for="cpu2">CPU 2 auswählen:</label>
-          <select id="cpu2">
-            <option value="Core i9-13900K">Intel Core i9-13900K</option>
-            <option value="Core i7-13700K">Intel Core i7-13700K</option>
-            <option value="Core i9-12900K">Intel Core i9-12900K</option>
-            <option value="Core i9-11900K">Intel Core i9-11900K</option>
-            <option value="Ryzen 9 7950X">AMD Ryzen 9 7950X</option>
-            <option value="Ryzen 9 5950X">AMD Ryzen 9 5950X</option>
-            <option value="Ryzen 9 3950X">AMD Ryzen 9 3950X</option>
-          </select>
-        </div>
-        <div>
-          <button onclick="zeigeProcessorVergleich()">Vergleich anzeigen</button>
-        </div>
-      </div>
-      <div id="processorVergleichTabelle"></div>
-    </div>
-  </section>
-
-        gaming4k: "130+ FPS",
-        mining: "100 MH/s",
-        preis: "699.99 €"
-      },
-      {
-        marke: "Nvidia",
-        modell: "RTX 3070 Ti",
-        speicher: "8GB GDDR6X",
-        takt: "1770 MHz Boost",
-        tdp: "290W",
-        raytracing: "2nd Gen",
-        dlss: "DLSS 2.0",
-        benchmark: "6800 Punkte (3DMark)",
-        gaming4k: "110+ FPS",
-        mining: "80 MH/s",
-        preis: "599.99 €"
-      },
-      {
-        marke: "Nvidia",
-        modell: "RTX 3070",
-        speicher: "8GB GDDR6",
-        takt: "1725 MHz Boost",
-        tdp: "220W",
-        raytracing: "2nd Gen",
-        dlss: "DLSS 2.0",
-        benchmark: "6500 Punkte (3DMark)",
-        gaming4k: "100+ FPS",
-        mining: "70 MH/s",
-        preis: "499.99 €"
-      },
-      // AMD RX 7000 Series
-      {
-        marke: "AMD",
-        modell: "RX 7900 XTX",
-        speicher: "24GB GDDR6",
-        takt: "2500 MHz Boost",
-        tdp: "355W",
-        raytracing: "RDNA 3",
-        dlss: "FSR 3.0",
-        benchmark: "9000 Punkte (3DMark)",
-        gaming4k: "200+ FPS",
-        mining: "160 MH/s",
-        preis: "999.99 €"
-      },
-      {
-        marke: "AMD",
-        modell: "RX 7900 XT",
-        speicher: "20GB GDDR6",
-        takt: "2400 MHz Boost",
-        tdp: "300W",
-        raytracing: "RDNA 3",
-        dlss: "FSR 3.0",
-        benchmark: "8500 Punkte (3DMark)",
-        gaming4k: "180+ FPS",
-        mining: "140 MH/s",
-        preis: "899.99 €"
-      },
-      {
-        marke: "AMD",
-        modell: "RX 7800 XT",
-        speicher: "16GB GDDR6",
-        takt: "2430 MHz Boost",
-        tdp: "263W",
-        raytracing: "RDNA 3",
-        dlss: "FSR 3.0",
-        benchmark: "7800 Punkte (3DMark)",
-        gaming4k: "140+ FPS",
-        mining: "100 MH/s",
-        preis: "599.99 €"
-      },
-      {
-        marke: "AMD",
-        modell: "RX 7700 XT",
-        speicher: "12GB GDDR6",
-        takt: "2544 MHz Boost",
-        tdp: "245W",
-        raytracing: "RDNA 3",
-        dlss: "FSR 3.0",
-        benchmark: "7200 Punkte (3DMark)",
-        gaming4k: "120+ FPS",
-        mining: "90 MH/s",
-        preis: "499.99 €"
-      },
-      // AMD RX 6000 Series
-      {
-        marke: "AMD",
-        modell: "RX 6950 XT",
-        speicher: "16GB GDDR6",
-        takt: "2310 MHz Boost",
-        tdp: "335W",
-        raytracing: "RDNA 2",
-        dlss: "FSR 2.0",
-        benchmark: "7700 Punkte (3DMark)",
-        gaming4k: "150+ FPS",
-        mining: "120 MH/s",
-        preis: "699.99 €"
-      },
-      {
-        marke: "AMD",
-        modell: "RX 6900 XT",
-        speicher: "16GB GDDR6",
-        takt: "2250 MHz Boost",
-        tdp: "300W",
-        raytracing: "RDNA 2",
-        dlss: "FSR 2.0",
-        benchmark: "7400 Punkte (3DMark)",
-        gaming4k: "140+ FPS",
-        mining: "110 MH/s",
-        preis: "649.99 €"
-      },
-      {
-        marke: "AMD",
-        modell: "RX 6800 XT",
-        speicher: "16GB GDDR6",
-        takt: "2250 MHz Boost",
-        tdp: "300W",
-        raytracing: "RDNA 2",
-        dlss: "FSR 2.0",
-        benchmark: "7000 Punkte (3DMark)",
-        gaming4k: "130+ FPS",
-        mining: "100 MH/s",
-        preis: "579.99 €"
-      },
-      {
-        marke: "AMD",
-        modell: "RX 6800",
-        speicher: "16GB GDDR6",
-        takt: "2105 MHz Boost",
-        tdp: "250W",
-        raytracing: "RDNA 2",
-        dlss: "FSR 2.0",
-        benchmark: "6600 Punkte (3DMark)",
-        gaming4k: "120+ FPS",
-        mining: "90 MH/s",
-        preis: "529.99 €"
-      },
-      {
-        marke: "AMD",
-        modell: "RX 6700 XT",
-        speicher: "12GB GDDR6",
-        takt: "2581 MHz Boost",
-        tdp: "230W",
-        raytracing: "RDNA 2",
-        dlss: "FSR 2.0",
-        benchmark: "6000 Punkte (3DMark)",
-        gaming4k: "100+ FPS",
-        mining: "80 MH/s",
-        preis: "449.99 €"
-      }
-    ];
-
-    // Funktion zum Erstellen der Vergleichstabelle für zwei ausgewählte GPUs
-    function zeigeVergleich() {
-      const select1 = document.getElementById("gpu1");
-      const select2 = document.getElementById("gpu2");
-      const modell1 = select1.value;
-      const modell2 = select2.value;
-
-      if (modell1 === modell2) {
-        document.getElementById("gpuVergleichTabelle").innerHTML =
-          "<p style='text-align:center; color:red;'>Bitte wähle zwei unterschiedliche GPUs aus.</p>";
-        return;
-      }
-
-      const gpu1 = gpuDetails.find(gpu => gpu.modell === modell1);
-      const gpu2 = gpuDetails.find(gpu => gpu.modell === modell2);
-
-      if (gpu1 && gpu2) {
-        let html = "<div class='comparison-container'>";
-        html += "<table class='comparison-table'>";
-        html += "<thead><tr><th>Spezifikation</th><th>" + gpu1.modell + "</th><th>" + gpu2.modell + "</th></tr></thead>";
-        html += "<tbody>";
-
-        // Hauptspezifikationen
-        html += "<tr class='category-header'><td colspan='3'>Grundlegende Spezifikationen</td></tr>";
-        html += "<tr><td>Hersteller</td><td>" + gpu1.marke + "</td><td>" + gpu2.marke + "</td></tr>";
-        html += "<tr><td>Speicher</td><td>" + gpu1.speicher + "</td><td>" + gpu2.speicher + "</td></tr>";
-        html += "<tr><td>Boost-Takt</td><td>" + gpu1.takt + "</td><td>" + gpu2.takt + "</td></tr>";
-        html += "<tr><td>Stromverbrauch (TDP)</td><td>" + gpu1.tdp + "</td><td>" + gpu2.tdp + "</td></tr>";
-
-        // Technologie
-        html += "<tr class='category-header'><td colspan='3'>Technologie-Features</td></tr>";
-        html += "<tr><td>Ray-Tracing</td><td>" + gpu1.raytracing + "</td><td>" + gpu2.raytracing + "</td></tr>";
-        html += "<tr><td>KI-Upscaling</td><td>" + gpu1.dlss + "</td><td>" + gpu2.dlss + "</td></tr>";
-
-        // Performance
-        html += "<tr class='category-header'><td colspan='3'>Performance-Metrics</td></tr>";
-        html += "<tr><td>3DMark Score</td><td>" + gpu1.benchmark + "</td><td>" + gpu2.benchmark + "</td></tr>";
-        html += "<tr><td>4K Gaming</td><td>" + gpu1.gaming4k + "</td><td>" + gpu2.gaming4k + "</td></tr>";
-        html += "<tr><td>Mining Performance</td><td>" + gpu1.mining + "</td><td>" + gpu2.mining + "</td></tr>";
-
-        // Preis
-        html += "<tr class='category-header'><td colspan='3'>Preis</td></tr>";
-        html += "<tr class='price-row'><td>Aktueller Preis</td><td>" + gpu1.preis + "</td><td>" + gpu2.preis + "</td></tr>";
-
-        html += "</tbody></table>";
-
-        // Hinzufügen von Performance-Vergleichsbalken
-        html += "<div class='performance-comparison'>";
-        html += "<h3>Performance-Vergleich</h3>";
-        const benchmark1 = parseInt(gpu1.benchmark);
-        const benchmark2 = parseInt(gpu2.benchmark);
-        const maxBenchmark = Math.max(benchmark1, benchmark2);
-
-        html += "<div class='benchmark-bars'>";
-        html += "<div class='bar-container'>";
-        html += "<div class='bar' style='width: " + (benchmark1/maxBenchmark*100) + "%'></div>";
-        html += "<span>" + gpu1.modell + ": " + benchmark1 + " Punkte</span>";
-        html += "</div>";
-        html += "<div class='bar-container'>";
-        html += "<div class='bar' style='width: " + (benchmark2/maxBenchmark*100) + "%'></div>";
-        html += "<span>" + gpu2.modell + ": " + benchmark2 + " Punkte</span>";
-        html += "</div>";
-        html += "</div>";
-        html += "</div>";
-
-        html += "</div>";
-        document.getElementById("gpuVergleichTabelle").innerHTML = html;
-      } else {
-        document.getElementById("gpuVergleichTabelle").innerHTML =
-          "<p style='text-align:center;'>Daten für beide Modelle wurden nicht gefunden.</p>";
-      }
-    }
-  </script>
+  <title>Hardware Vergleich</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header und Navigation -->
+  <!-- Header -->
   <header>
     <div class="container">
       <div class="logo">
-        <h1>Vergleichswebsite</h1>
+        <h1>Hardware Vergleich</h1>
       </div>
       <nav>
         <ul>
-          <li><a href="#">Start</a></li>
-          <li><a href="#">Komponenten</a></li>
-          <li><a href="#">Benchmarks</a></li>
-          <li><a href="#">Testberichte</a></li>
-          <li><a href="#">Forum</a></li>
-          <li><a href="#">Über uns</a></li>
+          <li><a href="#" class="home-link">Home</a></li>
+          <li><a href="#" class="about-link">Über uns</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero-Bereich -->
-  <section class="hero">
+  <!-- Home Screen -->
+  <section id="home-screen" class="active">
     <div class="container">
-      <h2>Finde die beste Grafikkarte</h2>
-      <p>Vergleiche technische Daten, Benchmarks und Preise</p>
-      <a href="#vergleich" class="cta">Jetzt vergleichen</a>
-    </div>
-  </section>
-
-  <!-- Kategorien -->
-  <section class="categories">
-    <div class="container">
-      <h2>Kategorien</h2>
-      <ul class="category-list">
-        <li><a href="#">Grafikkarten</a></li>
-        <li><a href="#">Prozessoren</a></li>
-        <li><a href="#">Arbeitsspeicher</a></li>
-        <li><a href="#">Mainboards</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Produktliste (Übersichtsseite) -->
-  <section class="product-list">
-    <div class="container">
-      <h2>Vergleichsübersicht: Neueste GPUs</h2>
-      <div class="filter">
-        <p>Filter: Hersteller, Modell, Preis, Benchmark</p>
-      </div>
-      <div class="products">
-        <!-- Beispielhafte Produktkarten -->
-        <div class="product-card">
-          <img src="rtx4090.jpg" alt="Nvidia RTX 4090">
-          <h3>Nvidia RTX 4090</h3>
-          <p>Extreme Leistung und modernste Technologien.</p>
-          <a href="#detail-rtx4090">Details</a>
+      <h2>Wähle deine Komponente</h2>
+      <div class="component-choice">
+        <div class="choice-card" onclick="showSection('gpu-section')">
+          <img src="https://assets.nvidia.partners/images/png/nvidia-geforce-rtx-4090.png" alt="GPU">
+          <h3>Grafikkarten</h3>
+          <p>Vergleiche die neuesten GPUs von NVIDIA und AMD</p>
         </div>
-        <div class="product-card">
-          <img src="rtx4080.jpg" alt="Nvidia RTX 4080">
-          <h3>Nvidia RTX 4080</h3>
-          <p>High-End Performance und innovative Raytracing-Technik.</p>
-          <a href="#detail-rtx4080">Details</a>
-        </div>
-        <div class="product-card">
-          <img src="rx7900xtx.jpg" alt="AMD RX 7900 XTX">
-          <h3>AMD RX 7900 XTX</h3>
-          <p>Ultimative Performance bei effizientem Stromverbrauch.</p>
-          <a href="#detail-rx7900xtx">Details</a>
-        </div>
-        <div class="product-card">
-          <img src="rx7900xt.jpg" alt="AMD RX 7900 XT">
-          <h3>AMD RX 7900 XT</h3>
-          <p>Starke Leistung zu einem attraktiven Preis.</p>
-          <a href="#detail-rx7900xt">Details</a>
+        <div class="choice-card" onclick="showSection('cpu-section')">
+          <img src="https://www.intel.com/content/dam/products/hero/foreground/processor-box-13th-gen-core-i9-unlocked-1x1.png" alt="CPU">
+          <h3>Prozessoren</h3>
+          <p>Vergleiche aktuelle CPUs von Intel und AMD</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Vergleichsbereich (statische Tabelle als Beispiel) -->
-  <section class="vergleich" id="vergleich">
-    <div class="container">
-      <h2>Interaktiver Vergleich</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Modell</th>
-            <th>Technische Daten</th>
-            <th>Benchmark</th>
-            <th>Preis</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Nvidia RTX 4090</td>
-            <td>Specs ...</td>
-            <td>95 Punkte</td>
-            <td>€1599</td>
-          </tr>
-          <tr>
-            <td>Nvidia RTX 4080</td>
-            <td>Specs ...</td>
-            <td>88 Punkte</td>
-            <td>€1199</td>
-          </tr>
-          <tr>
-            <td>AMD RX 7900 XTX</td>
-            <td>Specs ...</td>
-            <td>90 Punkte</td>
-            <td>€999</td>
-          </tr>
-          <tr>
-            <td>AMD RX 7900 XT</td>
-            <td>Specs ...</td>
-            <td>85 Punkte</td>
-            <td>€899</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- GPU Section -->
+  <section id="gpu-section" class="hidden">
+    <div class="return-button" onclick="showSection('home-screen')">
+      <span>←</span> Zurück
     </div>
-  </section>
-
-  <!-- Detailseite für ein Produkt: Beispiel Nvidia RTX 4090 -->
-  <section class="detail" id="detail-rtx4090">
     <div class="container">
-      <h2>Produktdetailseite: Nvidia RTX 4090</h2>
-      <div class="detail-content">
-        <img src="rtx4090-detail.jpg" alt="Nvidia RTX 4090 Detail">
-        <div class="detail-info">
-          <h3>Nvidia RTX 4090</h3>
-          <p>Die Nvidia RTX 4090 bietet extreme Leistung, fortschrittliche Raytracing-Funktionen und innovative Technologien für anspruchsvolle Gamer und Profis.</p>
-          <div class="benchmark">
-            <h4>Benchmark-Ergebnisse</h4>
-            <p>3DMark: 9500 Punkte, FPS: 120+ in AAA-Spielen, etc.</p>
-          </div>
-          <div class="price-widget" id="price-widget" data-modell="RTX 4090">
-            <h4>Preisvergleich</h4>
-            <button onclick="/* Hier kann später die Preisermittlungsfunktion integriert werden */">Günstigsten Preis ermitteln</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Neuer Abschnitt: Vergleich von zwei GPUs -->
-  <section class="gpu-vergleich">
-    <div class="container">
-      <h2>Vergleiche zwei GPUs</h2>
+      <h2>GPU Vergleich</h2>
       <div class="auswahl">
         <div>
-          <label for="gpu1">GPU 1 auswählen:</label>
+          <label for="gpu1">GPU 1:</label>
           <select id="gpu1">
             <!-- RTX 40 Series -->
             <option value="RTX 4090">Nvidia RTX 4090</option>
@@ -857,9 +78,10 @@
           </select>
         </div>
         <div>
-          <label for="gpu2">GPU 2 auswählen:</label>
+          <label for="gpu2">GPU 2:</label>
           <select id="gpu2">
-            <!-- RTX 40 Series -->            <option value="RTX 4090">Nvidia RTX 4090</option>
+            <!-- RTX 40 Series -->
+            <option value="RTX 4090">Nvidia RTX 4090</option>
             <option value="RTX 4080">Nvidia RTX 4080</option>
             <option value="RTX 4070 Ti">Nvidia RTX 4070 Ti</option>
             <option value="RTX 4070">Nvidia RTX 4070</option>
@@ -884,24 +106,65 @@
           </select>
         </div>
         <div>
-          <button onclick="zeigeVergleich()">Vergleich anzeigen</button>
+          <button onclick="zeigeVergleich()">Vergleichen</button>
         </div>
       </div>
       <div id="gpuVergleichTabelle"></div>
     </div>
   </section>
 
+  <!-- CPU Section -->
+  <section id="cpu-section" class="hidden">
+    <div class="return-button" onclick="showSection('home-screen')">
+      <span>←</span> Zurück
+    </div>
+    <div class="container">
+      <h2>CPU Vergleich</h2>
+      <div class="auswahl">
+        <div>
+          <label for="cpu1">CPU 1:</label>
+          <select id="cpu1">
+            <option value="Core i9-13900K">Intel Core i9-13900K</option>
+            <option value="Core i7-13700K">Intel Core i7-13700K</option>
+            <option value="Core i9-12900K">Intel Core i9-12900K</option>
+            <option value="Core i9-11900K">Intel Core i9-11900K</option>
+            <option value="Ryzen 9 7950X">AMD Ryzen 9 7950X</option>
+            <option value="Ryzen 9 5950X">AMD Ryzen 9 5950X</option>
+            <option value="Ryzen 9 3950X">AMD Ryzen 9 3950X</option>
+          </select>
+        </div>
+        <div>
+          <label for="cpu2">CPU 2:</label>
+          <select id="cpu2">
+            <option value="Core i9-13900K">Intel Core i9-13900K</option>
+            <option value="Core i7-13700K">Intel Core i7-13700K</option>
+            <option value="Core i9-12900K">Intel Core i9-12900K</option>
+            <option value="Core i9-11900K">Intel Core i9-11900K</option>
+            <option value="Ryzen 9 7950X">AMD Ryzen 9 7950X</option>
+            <option value="Ryzen 9 5950X">AMD Ryzen 9 5950X</option>
+            <option value="Ryzen 9 3950X">AMD Ryzen 9 3950X</option>
+          </select>
+        </div>
+        <div>
+          <button onclick="zeigeProcessorVergleich()">Vergleichen</button>
+        </div>
+      </div>
+      <div id="processorVergleichTabelle"></div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 Vergleichswebsite für Computerkomponenten</p>
+      <p>&copy; 2025 Hardware Vergleich</p>
       <ul>
         <li><a href="#">Impressum</a></li>
         <li><a href="#">Datenschutz</a></li>
-        <li><a href="#">AGB</a></li>
         <li><a href="#">Kontakt</a></li>
       </ul>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
