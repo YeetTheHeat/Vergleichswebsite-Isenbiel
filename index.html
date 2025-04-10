@@ -416,6 +416,44 @@
         raytracing: "2nd Gen",
         dlss: "DLSS 2.0",
         benchmark: "7300 Punkte (3DMark)",
+
+  <!-- Processor comparison section -->
+  <section class="processor-vergleich">
+    <div class="container">
+      <h2>Vergleiche zwei Prozessoren</h2>
+      <div class="auswahl">
+        <div>
+          <label for="cpu1">CPU 1 auswählen:</label>
+          <select id="cpu1">
+            <option value="Core i9-13900K">Intel Core i9-13900K</option>
+            <option value="Core i7-13700K">Intel Core i7-13700K</option>
+            <option value="Core i9-12900K">Intel Core i9-12900K</option>
+            <option value="Core i9-11900K">Intel Core i9-11900K</option>
+            <option value="Ryzen 9 7950X">AMD Ryzen 9 7950X</option>
+            <option value="Ryzen 9 5950X">AMD Ryzen 9 5950X</option>
+            <option value="Ryzen 9 3950X">AMD Ryzen 9 3950X</option>
+          </select>
+        </div>
+        <div>
+          <label for="cpu2">CPU 2 auswählen:</label>
+          <select id="cpu2">
+            <option value="Core i9-13900K">Intel Core i9-13900K</option>
+            <option value="Core i7-13700K">Intel Core i7-13700K</option>
+            <option value="Core i9-12900K">Intel Core i9-12900K</option>
+            <option value="Core i9-11900K">Intel Core i9-11900K</option>
+            <option value="Ryzen 9 7950X">AMD Ryzen 9 7950X</option>
+            <option value="Ryzen 9 5950X">AMD Ryzen 9 5950X</option>
+            <option value="Ryzen 9 3950X">AMD Ryzen 9 3950X</option>
+          </select>
+        </div>
+        <div>
+          <button onclick="zeigeProcessorVergleich()">Vergleich anzeigen</button>
+        </div>
+      </div>
+      <div id="processorVergleichTabelle"></div>
+    </div>
+  </section>
+
         gaming4k: "130+ FPS",
         mining: "100 MH/s",
         preis: "699.99 €"

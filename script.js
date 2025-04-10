@@ -1,3 +1,122 @@
+// Processor data
+const processorDetails = [
+  // Intel 13th Gen
+  {
+    marke: "Intel",
+    modell: "Core i9-13900K",
+    kerne: "24 (8P + 16E)",
+    threads: "32",
+    basistakt: "3.0 GHz",
+    boosttakt: "5.8 GHz",
+    cache: "36MB L3",
+    tdp: "125W",
+    ddr: "DDR4/DDR5",
+    pcie: "PCIe 5.0",
+    preis: "599.99 €",
+    benchmark: "9200"
+  },
+  {
+    marke: "Intel",
+    modell: "Core i7-13700K",
+    kerne: "16 (8P + 8E)",
+    threads: "24",
+    basistakt: "3.4 GHz",
+    boosttakt: "5.4 GHz",
+    cache: "30MB L3",
+    tdp: "125W",
+    ddr: "DDR4/DDR5",
+    pcie: "PCIe 5.0",
+    preis: "419.99 €",
+    benchmark: "8500"
+  },
+  // Intel 12th Gen
+  {
+    marke: "Intel",
+    modell: "Core i9-12900K",
+    kerne: "16 (8P + 8E)",
+    threads: "24",
+    basistakt: "3.2 GHz",
+    boosttakt: "5.2 GHz",
+    cache: "30MB L3",
+    tdp: "125W",
+    ddr: "DDR4/DDR5",
+    pcie: "PCIe 5.0",
+    preis: "449.99 €",
+    benchmark: "8000"
+  },
+  // Intel 11th Gen
+  {
+    marke: "Intel",
+    modell: "Core i9-11900K",
+    kerne: "8",
+    threads: "16",
+    basistakt: "3.5 GHz",
+    boosttakt: "5.3 GHz",
+    cache: "16MB L3",
+    tdp: "125W",
+    ddr: "DDR4",
+    pcie: "PCIe 4.0",
+    preis: "399.99 €",
+    benchmark: "7200"
+  },
+  // AMD Ryzen 7000
+  {
+    marke: "AMD",
+    modell: "Ryzen 9 7950X",
+    kerne: "16",
+    threads: "32",
+    basistakt: "4.5 GHz",
+    boosttakt: "5.7 GHz",
+    cache: "64MB L3",
+    tdp: "170W",
+    ddr: "DDR5",
+    pcie: "PCIe 5.0",
+    preis: "699.99 €",
+    benchmark: "9100"
+  },
+  // AMD Ryzen 5000
+  {
+    marke: "AMD",
+    modell: "Ryzen 9 5950X",
+    kerne: "16",
+    threads: "32",
+    basistakt: "3.4 GHz",
+    boosttakt: "4.9 GHz",
+    cache: "64MB L3",
+    tdp: "105W",
+    ddr: "DDR4",
+    pcie: "PCIe 4.0",
+    preis: "549.99 €",
+    benchmark: "8300"
+  },
+  // AMD Ryzen 3000
+  {
+    marke: "AMD",
+    modell: "Ryzen 9 3950X",
+    kerne: "16",
+    threads: "32",
+    basistakt: "3.5 GHz",
+    boosttakt: "4.7 GHz",
+    cache: "64MB L3",
+    tdp: "105W",
+    ddr: "DDR4",
+    pcie: "PCIe 4.0",
+    preis: "449.99 €",
+    benchmark: "7500"
+  }
+];
+
+// Processor image URLs
+const processorImages = {
+  'Core i9-13900K': 'https://www.intel.com/content/dam/products/hero/foreground/processor-box-13th-gen-core-i9-unlocked-1x1.png',
+  'Core i7-13700K': 'https://www.intel.com/content/dam/products/hero/foreground/processor-box-13th-gen-core-i7-unlocked-1x1.png',
+  'Core i9-12900K': 'https://www.intel.com/content/dam/products/hero/foreground/processor-box-12th-gen-core-i9-unlocked-1x1.png',
+  'Core i9-11900K': 'https://www.intel.com/content/dam/products/hero/foreground/processor-box-11th-gen-core-i9-unlocked-1x1.png',
+  'Ryzen 9 7950X': 'https://www.amd.com/system/files/processor-ryzen-9-7950x.png',
+  'Ryzen 9 5950X': 'https://www.amd.com/system/files/processor-ryzen-9-5950x.png',
+  'Ryzen 9 3950X': 'https://www.amd.com/system/files/processor-ryzen-9-3950x.png'
+};
+
 // GPU image URLs - replace with actual image URLs
 const gpuImages = {
   'RTX 4090': 'https://assets.nvidia.partners/images/png/nvidia-geforce-rtx-4090.png',
@@ -20,6 +139,80 @@ const gpuImages = {
   'RX 6800': 'https://www.amd.com/system/files/products/6800.png',
   'RX 6700 XT': 'https://www.amd.com/system/files/products/6700xt.png'
 };
+
+function zeigeProcessorVergleich() {
+  const select1 = document.getElementById("cpu1");
+  const select2 = document.getElementById("cpu2");
+  const modell1 = select1.value;
+  const modell2 = select2.value;
+
+  if (modell1 === modell2) {
+    document.getElementById("processorVergleichTabelle").innerHTML =
+      "<p style='text-align:center; color:var(--accent-color);'>Bitte wähle zwei unterschiedliche Prozessoren aus.</p>";
+    return;
+  }
+
+  const cpu1 = processorDetails.find(cpu => cpu.modell === modell1);
+  const cpu2 = processorDetails.find(cpu => cpu.modell === modell2);
+
+  if (cpu1 && cpu2) {
+    let html = "<div class='comparison-container'>";
+
+    // Add CPU images
+    html += "<div style='display: flex; justify-content: space-around; margin-bottom: 20px;'>";
+    html += `<div style='text-align: center;'><img src='${processorImages[cpu1.modell]}' alt='${cpu1.modell}' class='cpu-image'><h3>${cpu1.modell}</h3></div>`;
+    html += `<div style='text-align: center;'><img src='${processorImages[cpu2.modell]}' alt='${cpu2.modell}' class='cpu-image'><h3>${cpu2.modell}</h3></div>`;
+    html += "</div>";
+
+    html += "<table class='comparison-table'>";
+    html += "<thead><tr><th>Spezifikation</th><th>" + cpu1.modell + "</th><th>" + cpu2.modell + "</th></tr></thead>";
+    html += "<tbody>";
+
+    // Specs
+    html += "<tr class='category-header'><td colspan='3'>Grundlegende Spezifikationen</td></tr>";
+    html += "<tr><td>Hersteller</td><td>" + cpu1.marke + "</td><td>" + cpu2.marke + "</td></tr>";
+    html += "<tr><td>Kerne</td><td>" + cpu1.kerne + "</td><td>" + cpu2.kerne + "</td></tr>";
+    html += "<tr><td>Threads</td><td>" + cpu1.threads + "</td><td>" + cpu2.threads + "</td></tr>";
+    html += "<tr><td>Basis-Takt</td><td>" + cpu1.basistakt + "</td><td>" + cpu2.basistakt + "</td></tr>";
+    html += "<tr><td>Boost-Takt</td><td>" + cpu1.boosttakt + "</td><td>" + cpu2.boosttakt + "</td></tr>";
+    html += "<tr><td>Cache</td><td>" + cpu1.cache + "</td><td>" + cpu2.cache + "</td></tr>";
+    html += "<tr><td>TDP</td><td>" + cpu1.tdp + "</td><td>" + cpu2.tdp + "</td></tr>";
+
+    // Technology
+    html += "<tr class='category-header'><td colspan='3'>Technologie-Features</td></tr>";
+    html += "<tr><td>RAM Support</td><td>" + cpu1.ddr + "</td><td>" + cpu2.ddr + "</td></tr>";
+    html += "<tr><td>PCIe Version</td><td>" + cpu1.pcie + "</td><td>" + cpu2.pcie + "</td></tr>";
+
+    // Performance & Price
+    html += "<tr class='category-header'><td colspan='3'>Performance & Preis</td></tr>";
+    html += "<tr><td>Benchmark Score</td><td>" + cpu1.benchmark + "</td><td>" + cpu2.benchmark + "</td></tr>";
+    html += "<tr class='price-row'><td>Preis</td><td>" + cpu1.preis + "</td><td>" + cpu2.preis + "</td></tr>";
+
+    html += "</tbody></table>";
+
+    // Performance comparison bars
+    html += "<div class='performance-comparison'>";
+    html += "<h3>Performance-Vergleich</h3>";
+    const benchmark1 = parseInt(cpu1.benchmark);
+    const benchmark2 = parseInt(cpu2.benchmark);
+    const maxBenchmark = Math.max(benchmark1, benchmark2);
+
+    html += "<div class='benchmark-bars'>";
+    html += "<div class='bar-container'>";
+    html += "<div class='bar' style='width: " + (benchmark1/maxBenchmark*100) + "%'></div>";
+    html += "<span>" + cpu1.modell + ": " + benchmark1 + " Punkte</span>";
+    html += "</div>";
+    html += "<div class='bar-container'>";
+    html += "<div class='bar' style='width: " + (benchmark2/maxBenchmark*100) + "%'></div>";
+    html += "<span>" + cpu2.modell + ": " + benchmark2 + " Punkte</span>";
+    html += "</div>";
+    html += "</div>";
+    html += "</div>";
+
+    html += "</div>";
+    document.getElementById("processorVergleichTabelle").innerHTML = html;
+  }
+}
 
 function zeigeVergleich() {
   const select1 = document.getElementById("gpu1");

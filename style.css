@@ -182,3 +182,23 @@ header nav ul li a:hover {
     width: 100%;
   }
 }
+
+
+/* Processor Comparison Styles */
+.processor-vergleich {
+  padding: 40px 0;
+  background: var(--card-background);
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+.cpu-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 10px auto;
+  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+  background: var(--background-dark);
+  padding: 10px;
+}
