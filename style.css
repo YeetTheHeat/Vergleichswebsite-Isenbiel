@@ -1,177 +1,184 @@
-/* snowflakes.css */
 
-/* Container für Schneeflocken – deckt den gesamten Bildschirm ab */
-.snowflakes {
-  position: fixed;
+/* Modern Tech Theme */
+:root {
+  --primary-color: #00ff9d;
+  --secondary-color: #2d2d2d;
+  --accent-color: #ff006e;
+  --background-dark: #1a1a1a;
+  --text-color: #ffffff;
+  --card-background: #2d2d2d;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-dark);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+  background: var(--secondary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding: 1rem 0;
+}
+
+header nav ul li a {
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(45deg, var(--secondary-color), var(--background-dark));
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* verhindert, dass Klicks blockiert werden */
-  z-index: 10000; /* liegt über allem */
-  overflow: hidden;
+  background: linear-gradient(90deg, var(--primary-color) 1px, transparent 1px) 0 0,
+              linear-gradient(var(--primary-color) 1px, transparent 1px) 0 0;
+  background-size: 20px 20px;
+  opacity: 0.1;
 }
 
-/* Einzelne Schneeflocke */
-.snowflake {
-  position: absolute;
-  top: -10%; /* startet etwas außerhalb des Bildschirms */
-  color: #fff;
-  opacity: 0.8;
-  user-select: none;
-  animation: fall linear infinite;
+.hero .cta {
+  background: var(--primary-color);
+  color: var(--background-dark);
+  font-weight: bold;
+  transition: transform 0.3s;
 }
 
-/* Keyframes für Fall und leichtes Driften */
-@keyframes fall {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translate(20px, 50vh);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translate(0, 100vh);
-    opacity: 0;
-  }
+.hero .cta:hover {
+  transform: scale(1.05);
 }
 
-/* Variationen für einzelne Schneeflocken */
-.snowflake:nth-child(1) {
-  left: 10%;
-  font-size: 1.2em;
-  animation-duration: 10s;
-  animation-delay: 0s;
+/* Product Cards */
+.product-card {
+  background: var(--card-background);
+  border: 1px solid var(--primary-color);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 10px;
 }
-.snowflake:nth-child(2) {
-  left: 20%;
-  font-size: 0.8em;
-  animation-duration: 12s;
-  animation-delay: 1s;
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 255, 157, 0.2);
 }
-.snowflake:nth-child(3) {
-  left: 30%;
-  font-size: 1em;
-  animation-duration: 9s;
-  animation-delay: 0.5s;
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
 }
-.snowflake:nth-child(4) {
-  left: 40%;
-  font-size: 1.5em;
-  animation-duration: 11s;
-  animation-delay: 2s;
-}
-.snowflake:nth-child(5) {
-  left: 50%;
-  font-size: 1.3em;
-  animation-duration: 10s;
-  animation-delay: 1.5s;
-}
-.snowflake:nth-child(6) {
-  left: 60%;
-  font-size: 0.9em;
-  animation-duration: 13s;
-  animation-delay: 0.7s;
-}
-.snowflake:nth-child(7) {
-  left: 70%;
-  font-size: 1.1em;
-  animation-duration: 8s;
-  animation-delay: 0.3s;
-}
-.snowflake:nth-child(8) {
-  left: 80%;
-  font-size: 1.4em;
-  animation-duration: 12s;
-  animation-delay: 1.2s;
-}
-.snowflake:nth-child(9) {
-  left: 90%;
-  font-size: 1em;
-  animation-duration: 10s;
-  animation-delay: 0.5s;
-}
-.snowflake:nth-child(10) {
-  left: 5%;
-  font-size: 1.2em;
-  animation-duration: 11s;
-  animation-delay: 1.3s;
-}
-/* Comparison Styles */
+
+/* Comparison Table */
 .comparison-container {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: var(--card-background);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
 }
 
 .comparison-table {
   width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .comparison-table th,
 .comparison-table td {
-  padding: 12px;
-  text-align: left;
-  border: 1px solid #ddd;
+  padding: 15px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .comparison-table th {
-  background-color: #f5f5f5;
-  font-weight: bold;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .category-header {
-  background-color: #e8e8e8;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   font-weight: bold;
-  text-align: center;
 }
 
 .price-row {
-  background-color: #f8f8f8;
-  font-weight: bold;
+  color: var(--accent-color);
 }
 
-.performance-comparison {
-  margin-top: 30px;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 8px;
-}
-
-.benchmark-bars {
-  margin-top: 20px;
-}
-
-.bar-container {
-  margin: 10px 0;
-}
-
+/* Performance Bars */
 .bar {
-  height: 24px;
-  background: #4CAF50;
-  border-radius: 4px;
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  height: 30px;
+  border-radius: 15px;
+  transition: width 0.5s ease-in-out;
 }
 
 .bar-container span {
-  display: block;
-  margin-top: 5px;
-  font-size: 14px;
+  color: var(--text-color);
+  margin-top: 8px;
 }
 
-/* Responsive adjustments */
+/* GPU Selection Area */
+.auswahl select {
+  background: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--primary-color);
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.auswahl button {
+  background: var(--primary-color);
+  color: var(--background-dark);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s;
+}
+
+.auswahl button:hover {
+  transform: scale(1.05);
+}
+
+/* GPU Image Styling */
+.gpu-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 10px auto;
+  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+  .product-card {
+    width: calc(50% - 20px);
+  }
+  
   .comparison-table {
     font-size: 14px;
   }
-  
-  .comparison-table th,
-  .comparison-table td {
-    padding: 8px;
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    width: 100%;
   }
 }
